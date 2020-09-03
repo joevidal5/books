@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <style>
+            table, th, td {
+            border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Libros</h1>
+        <table>
+            <tr>
+                <th>Libro</th>
+                <th>Autor</th>
+                <th>Genero</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for libro in libros %}
+            <tr>
+                <td>{{libro.titulo}}</td>
+                <td>{{libro.autor}}</td>
+                <td>{{libro.genero}}</td>
+                <td>
+                    <a href="{{url_for('editarLibro', libro_id = libro.id )}}">
+                    Editar
+                    </a>
+                </td>
+                <td>
+                    <a href="{{url_for('eliminarLibro', libro_id = libro.id )}}" style="margin-left: 10px;">
+                    Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{url_for('nuevoLibro')}}">
+            Agregar un Libro
+        </a>
+    </body>
+</html>
