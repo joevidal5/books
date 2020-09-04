@@ -1,3 +1,5 @@
+{% extends "template.html" %}
+{% block contenido %}
 <form action="{{ url_for('editarLibro',libro_id = libro.id)}}" method="post">
     <div class="form-group">
         <label for="nombre">Titulo:</label>
@@ -15,3 +17,4 @@
 <a href='{{ url_for("mostrarLibros") }}'>
     <button>Cancelar</button>
 </a>
+{% endblock %}

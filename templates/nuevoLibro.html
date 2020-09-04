@@ -1,3 +1,5 @@
+{% extends "template.html" %}
+{% block contenido %}
 <h1>Agregar un Libro</h1>
 <form action="#" method="post">
    <div class="form-group">
@@ -13,3 +15,7 @@
        <button type="submit">Guardar</button>
    </div>
 </form>
+<a href='{{ url_for("mostrarLibros") }}'>
+    <button>Cancelar</button>
+</a>
+{% endblock %}

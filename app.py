@@ -17,6 +17,9 @@ session = DBSession()
 # landing page that will display all the books in our database
 # This function will operate on the Read operation.
 @app.route('/')
+def home():
+    return render_template("home.html")
+
 @app.route('/libros')
 def mostrarLibros():
     libros = session.query(Libro).all()
@@ -42,12 +45,9 @@ def nuevoLibro():
 def editarLibro(libro_id):
     libroEditado = session.query(Libro).filter_by(id=libro_id).one()
     if request.method == 'POST':
-        if request.form['nombre']:
-            libroEditado.titulo = request.form['nombre']
-        if request.form['autor']:
-            libroEditado.autor = request.form['autor']
-        if request.form['genero']:
-            libroEditado.genero = request.form['genero']
+        libroEditado.titulo = request.form['nombre']
+        libroEditado.autor = request.form['autor']
+        libroEditado.genero = request.form['genero']
         return redirect(url_for('mostrarLibros'))
     else:
         return render_template('editarLibro.html', libro=libroEditado)
