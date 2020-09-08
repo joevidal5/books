@@ -1,24 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Template Flask</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <h1 class="logo">Web App</h1>
-        <strong>
-          <nav>
-          <ul class="menu">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('mostrarLibros') }}">Libros</a></li>
-          </ul>
-        </nav></strong>
-      </div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body style="background-color: #d39e0042;">
+    <header class = "fadeInDown" style = "background-image: url({{ url_for ('static', filename='images/header.jpg') }})">
+        <div class="container">
+            <h1 class="text-center letraHeader display-3" style = "color:black">Biblioteca Virtual ITEC</h1>
+            <strong>
+                <nav>
+                    <ul class="menu container row fadeInDown" style = "display: flex;padding-top: 10%;">
+                        <a class = "btn btn-warning btn-lg active col-5" href="{{ url_for('home') }}">Home</a>
+                        <div class = "col-2"></div>
+                        <a class = "btn btn-warning btn-lg active col-5" href="{{ url_for('mostrarLibros') }}">Libros</a>
+                    </ul>
+                </nav>
+            </strong>
+        </div>
     </header>
-    {% block contenido %}
-    {% endblock %}
-  </body>
+    <div class = "container">
+        {% block contenido %}
+        {% endblock %}
+    </div>
+    <footer id= "sticky-footer" class="py-4 bg-azure text-white-50 fadeInUp" style = "margin-top: 0%;background-image: url({{ url_for('static', filename='images/header.jpg') }})">
+        <div class = "container" style = " display: flex;">
+            <div class="col-9 ">
+                <a style = "margin-left: 5%;" target="_blank" href = "https://www.esab.com.ar/ar/sp/support/upload/esab-terminos-condiciones-de-venta-v2-jul2016.pdf">Termino y condiciones</a>
+                <hr>
+            </div>
+            <div class = "col-1">
+                <a href = "https://www.instagram.com/">
+                    <img class="imgFooter" src="{{ url_for('static', filename='images/insta.png') }}" >
+                </a>
+            </div>
+            <div class = "col-1">
+                <a href = "https://www.facebook.com/">
+                    <img class="imgFooter" src="{{ url_for('static', filename='images/face.png') }}" >
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
